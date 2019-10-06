@@ -2,10 +2,11 @@ $color-blue: #0059ff;
 $color-dark: #333;
 $color-white: #fff;
 $color-light-gray: #e2e2e2;
-$color-red: #ff0000;
-$margin-main: 20px;
-$text-on-disabled-button: "*no new articles";
+$width-image-article: 300px;
+$height-image-article: 200px;
 
+$width-tablet: 912px;
+$width-mobile: 400px;
 * {
   margin: 0;
   padding: 0;
@@ -13,14 +14,14 @@ $text-on-disabled-button: "*no new articles";
   box-sizing: border-box;
 }
 body {
-  width: 100vw;
+  width: 99vw;
   overflow-x: hidden;
 }
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: $margin-main;
+  margin-bottom: 20px;
   button {
     padding: 12px 30px;
     color: $color-dark;
@@ -31,23 +32,10 @@ body {
     outline: none;
     cursor: pointer;
     position: relative;
-    &:hover:not([disabled]) {
+    &:hover {
       color: $color-white;
       background-color: $color-dark;
       border-color: $color-dark;
-    }
-    &:disabled {
-      color: $color-light-gray;
-      cursor: not-allowed;
-      &:hover::after {
-        content: $text-on-disabled-button;
-        position: absolute;
-        bottom: -20px;
-        left: 2px;
-        color: $color-red;
-        font-style: italic;
-        text-transform: lowercase;
-      }
     }
   }
 }
@@ -57,7 +45,7 @@ body {
   width: 90%;
   h1 {
     text-align: center;
-    margin: $margin-main;
+    margin: 20px;
   }
   .categories {
     display: flex;
@@ -90,18 +78,32 @@ body {
   display: flex;
   align-items: center;
   border-bottom: 1px solid $color-light-gray;
+  @media screen and (max-width: $width-tablet) {
+    flex-direction: column;
+  }
+  @media screen and (max-width: $width-mobile) {
+    width: 100%;
+  }
+  //width: 100%;
+  .text {
+    width: calc(100% - #{$width-image-article});
+    margin-left: 20px;
+    @media screen and (max-width: $width-tablet) {
+      width: 100%;
+      margin-left: 0;
+    }
+  }
   .right {
     text-align: right;
     font-style: italic;
   }
   .image {
-    width: 300px;
-    height: 200px;
+    width: $width-image-article;
+    height: $height-image-article;
     background: center no-repeat;
     background-size: cover;
   }
   h3, p {
-    margin-left: 20px;
     margin-top: 10px;
     text-align: justify;
   }
