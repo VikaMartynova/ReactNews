@@ -1,0 +1,112 @@
+$color-blue: #0059ff;
+$color-dark: #333;
+$color-white: #fff;
+$color-light-gray: #e2e2e2;
+$color-red: #ff0000;
+$margin-main: 20px;
+$text-on-disabled-button: "*no new articles";
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  box-sizing: border-box;
+}
+body {
+  width: 100vw;
+  overflow-x: hidden;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: $margin-main;
+  button {
+    padding: 12px 30px;
+    color: $color-dark;
+    text-transform: uppercase;
+    background-color: transparent;
+    border: 2px solid $color-light-gray;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    &:hover:not([disabled]) {
+      color: $color-white;
+      background-color: $color-dark;
+      border-color: $color-dark;
+    }
+    &:disabled {
+      color: $color-light-gray;
+      cursor: not-allowed;
+      &:hover::after {
+        content: $text-on-disabled-button;
+        position: absolute;
+        bottom: -20px;
+        left: 2px;
+        color: $color-red;
+        font-style: italic;
+        text-transform: lowercase;
+      }
+    }
+  }
+}
+.header {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  h1 {
+    text-align: center;
+    margin: $margin-main;
+  }
+  .categories {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    list-style: none;
+    padding: 5px 50px;
+    border-top: 1px solid $color-dark;
+    border-bottom: 2px solid $color-dark;
+    li {
+      padding: 5px 10px;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+  }
+}
+
+.content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 80%;
+}
+
+.article {
+  width: 80%;
+  margin: 20px auto;
+  padding: 20px 0;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid $color-light-gray;
+  .right {
+    text-align: right;
+    font-style: italic;
+  }
+  .image {
+    width: 300px;
+    height: 200px;
+    background: center no-repeat;
+    background-size: cover;
+  }
+  h3, p {
+    margin-left: 20px;
+    margin-top: 10px;
+    text-align: justify;
+  }
+  p {
+    text-indent: 0.5em;
+  }
+}
+
