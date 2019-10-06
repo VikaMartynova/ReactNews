@@ -7,9 +7,12 @@ export class Article extends Component {
       return new Date(date).toDateString();
     };
 
+    parseContent = (content) => {
+      return content.substring(0, content.lastIndexOf('…') + 1);
+    };
+
     render() {
         const {article} = this.props;
-        const content = article && article.content && article.content.substring(0,article.content.lastIndexOf('…') + 1);
         return (
             <div className='article'>
                 <div>
@@ -18,10 +21,14 @@ export class Article extends Component {
                 <div className='text'>
                     <h3>{article.title}</h3>
                     <p className='right'>{this.getDate(article.publishedAt)}</p>
-                    <p>{content}</p>
-                    {article.author &&
-                    <p className='right'>Source: <a href={article.url}
-                                                    target='_blank'>{article.author}</a></p>
+                    <p>{article.content ? this.parseContent(article.content) : article.description}</p>
+                    {article.author ?
+                        <p className='right'>Source:
+                            <a href={article.url} target='_blank'>{article.author}</a>
+                        </p>
+                        : <p className='right'>
+                            <a href={article.url} target='_blank'>Source</a>
+                        </p>
                     }
                 </div>
             </div>

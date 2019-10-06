@@ -46,7 +46,8 @@ class WebPage extends Component {
     applyCategory = (item) => {
         this.setState({categorySelected: item,
                         page: 1,
-                        articles: []},
+                        articles: [],
+                        totalArticles: 0},
             () => {this.loadNewsFromAPI()});
     };
 

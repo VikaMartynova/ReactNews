@@ -17,6 +17,9 @@ body {
   width: 99vw;
   overflow-x: hidden;
 }
+a {
+  color: $color-dark;
+}
 .container {
   display: flex;
   flex-direction: column;
