@@ -52,13 +52,15 @@ class WebPage extends Component {
 
     render() {
         const {categories, articles, totalArticles} = this.state;
-        const disabledButton = articles.length >= totalArticles;
+        const existButton = articles.length < totalArticles;
         return (
             <div className='container'>
                 <Header categories={categories}
                         applyCategory={this.applyCategory}/>
                 <Content articles={articles}/>
-                <button disabled={disabledButton} onClick={this.loadNewsFromAPI}>show more</button>
+                {existButton &&
+                    <button onClick={this.loadNewsFromAPI}>show more</button>
+                }
             </div>
         );
     }
