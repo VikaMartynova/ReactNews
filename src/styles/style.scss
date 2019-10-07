@@ -20,20 +20,33 @@ body {
 a {
   color: $color-dark;
 }
-.container {
+button {
+  outline: none;
+  cursor: pointer;
+}
+%flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+}
+%flex-column {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+}
+.container {
+  @extend %flex;
+  @extend %flex-column;
   align-items: center;
   margin-bottom: 20px;
-  button {
+  .more-btn {
     padding: 12px 30px;
     color: $color-dark;
     text-transform: uppercase;
     background-color: transparent;
     border: 2px solid $color-light-gray;
     border-radius: 5px;
-    outline: none;
-    cursor: pointer;
     position: relative;
     &:hover {
       color: $color-white;
@@ -43,18 +56,17 @@ a {
   }
 }
 .header {
-  display: flex;
-  flex-direction: column;
+  @extend %flex;
+  @extend %flex-column;
   width: 90%;
   h1 {
     text-align: center;
     margin: 20px;
   }
   .categories {
-    display: flex;
+    @extend %flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    list-style: none;
     padding: 5px 50px;
     border-top: 1px solid $color-dark;
     border-bottom: 2px solid $color-dark;
@@ -67,18 +79,18 @@ a {
 }
 
 .content {
+  @extend %flex;
+  @extend %flex-column;
   position: relative;
-  display: flex;
-  flex-direction: column;
   justify-content: center;
   width: 80%;
 }
 
 .article {
+  @extend %flex;
   width: 80%;
   margin: 20px auto;
   padding: 20px 0;
-  display: flex;
   align-items: center;
   border-bottom: 1px solid $color-light-gray;
   @media screen and (max-width: $width-tablet) {
@@ -87,7 +99,6 @@ a {
   @media screen and (max-width: $width-mobile) {
     width: 100%;
   }
-  //width: 100%;
   .text {
     width: calc(100% - #{$width-image-article});
     margin-left: 20px;
@@ -113,5 +124,29 @@ a {
   p {
     text-indent: 0.5em;
   }
+}
+
+.scroll-btn {
+  opacity: 0.5;
+  background-color: transparent;
+  width: 40px;
+  height: 40px;
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  border: 1px solid $color-dark;
+  border-radius: 50%;
+  &:hover {
+    opacity: 1;
+  }
+}
+.arrow-up {
+  border: solid $color-dark;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  -ms-transform: rotate(-135deg);
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
 }
 

@@ -3,6 +3,7 @@ import '../styles/style.scss';
 import {APIKey} from '../constants/API';
 import {Categories} from './Categories';
 import {Content} from './Content';
+import {ScrollButton} from "./ScrollButton";
 
 const Header = (props) => {
     return <div className='header'>
@@ -60,8 +61,9 @@ class WebPage extends Component {
                         applyCategory={this.applyCategory}/>
                 <Content articles={articles}/>
                 {existButton &&
-                    <button onClick={this.loadNewsFromAPI}>show more</button>
+                    <button className='more-btn' onClick={this.loadNewsFromAPI}>show more</button>
                 }
+                <ScrollButton scrollStepInPx="70" delayInMs="15"/>
             </div>
         );
     }
