@@ -2,6 +2,7 @@ $color-blue: #0059ff;
 $color-dark: #333;
 $color-white: #fff;
 $color-light-gray: #e2e2e2;
+$color-dark-red: #a81200;
 $width-image-article: 300px;
 $height-image-article: 200px;
 
@@ -74,6 +75,9 @@ button {
       padding: 5px 10px;
       text-transform: uppercase;
       cursor: pointer;
+    }
+    .selected {
+      color: $color-dark-red;
     }
   }
 }

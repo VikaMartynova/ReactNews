@@ -9,7 +9,8 @@ const Header = (props) => {
     return <div className='header'>
                 <h1>React News</h1>
                 <Categories categories={props.categories}
-                         applyCategory={props.applyCategory}/>
+                            selected={props.selected}
+                            applyCategory={props.applyCategory}/>
             </div>
 };
 
@@ -53,11 +54,12 @@ class WebPage extends Component {
     };
 
     render() {
-        const {categories, articles, totalArticles} = this.state;
+        const {categories, categorySelected, articles, totalArticles} = this.state;
         const existButton = articles.length < totalArticles;
         return (
             <div className='container'>
                 <Header categories={categories}
+                        selected={categorySelected}
                         applyCategory={this.applyCategory}/>
                 <Content articles={articles}/>
                 {existButton &&
